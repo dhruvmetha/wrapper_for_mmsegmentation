@@ -1,0 +1,9 @@
+*.ipynb
+*.pkl
+move_dragon/
+*.txt
+segmenter_more_classes/
+test_images/
+pretrain/
+mmsegmentation/
+**/__pycache__/
