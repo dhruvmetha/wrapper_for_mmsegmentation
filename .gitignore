@@ -7,3 +7,4 @@ test_images/
 pretrain/
 mmsegmentation/
 **/__pycache__/
+**/.ipynb_checkpoints/
