@@ -32,7 +32,9 @@ class Config(BaseConfig):
         # gpu_ids = [0]
         # workflow = [('train', 1)]
         class model:
-            pretrained = LOAD_CKPT
+            # pretrained = LOAD_CKPT
+            init_cfg = {'type': 'Pretrained', 'checkpoint': LOAD_CKPT}
+            
             class decode_head:
                 num_classes = len(CLASSES)
                 norm_cfg = NORM_CFG

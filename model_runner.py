@@ -98,7 +98,7 @@ class ModelRunner():
         train the model based on the runner cfg
         '''
         if resume:
-            LATEST_CKPT = opj(sef.cfg.work_dir, 'latest.pth')
+            LATEST_CKPT = opj(self.cfg.work_dir, 'latest.pth')
             if os.path.exists(LATEST_CKPT):
                 self.cfg.resume_from = LATEST_CKPT
         self.model = build_segmentor(self.cfg.model)
@@ -155,6 +155,7 @@ class ModelRunner():
                 cv2_writer.write(np_img)
             
             out_img.save(opj(results_path, Path(img).stem + '.png'))
+            # print(opj(results_path, Path(img).stem + '.png'))
             
         if video:
             cv2_writer.release()

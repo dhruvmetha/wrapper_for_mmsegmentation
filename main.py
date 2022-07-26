@@ -29,7 +29,7 @@ def main(args):
     model = ModelRunner(cfg.Config(), args.device, [args.gpu_id])
     model.load_dataset()
     if args.mode == 'train':
-        model.train()
+        model.train(resume=True)
     if args.mode == 'test':
         model.infer(args.test_folder, save_dir=args.save_dir, img_suffix=args.img_suffix, video=True)
     
@@ -43,5 +43,6 @@ if __name__ == '__main__':
     parser.add_argument('--test_folder', default='/common/users/dm1487/segmentation_data/open_bag/cam-00', type=str, help='folder where the image is', required=False)
     parser.add_argument('--img_suffix', default='.color.png', type=str, help='what images to select based on the suffix, for example, .png', required=False)
     parser.add_argument('--save_dir', default='', type=str, help='where the output will be saved', required=False)
+    # parser.add_argument('resume', default=False, type=str, help='resume training from latest checkpoint')
     args = parser.parse_args()
     main(args)

@@ -3,7 +3,7 @@ import os
 
 opj = lambda *args: os.path.join(*args)
 
-name = 'upernet_convnextb'
+name = 'upernet_convnextb_50k'
 CONFIG_FOLDER = '/common/home/dm1487/Spring22/robotics/segmentation/mmsegmentation/configs'
 MODEL_CONFIG = opj(CONFIG_FOLDER, 'convnext/upernet_convnext_base_fp16_512x512_160k_ade20k.py')
 
@@ -33,10 +33,7 @@ class Config(BaseConfig):
         # gpu_ids = [0]
         # workflow = [('train', 1)]
         class model:
-            init_cfg = {'type': 'Pretrained', 'checkpoint': LOAD_CKPT} # dict(type='Pretrained', checkpoint=LOAD_CKPT)
-            # class init_cfg:
-            #     checkpoint=LOAD_CKPT
-            #     type='Pretrained'
+            init_cfg = {'type': 'Pretrained', 'checkpoint': LOAD_CKPT}
             class decode_head:
                 num_classes = len(CLASSES)
                 norm_cfg = NORM_CFG
@@ -56,10 +53,10 @@ class Config(BaseConfig):
                 classes = CLASSES
                 
         class runner:
-            max_iters = 20000
+            max_iters = 50000
             
         class log_config:
-            interval = 100
+            interval = 500
             
         class evaluation:
             interval = 5000
