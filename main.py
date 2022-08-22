@@ -31,7 +31,7 @@ def main(args):
     if args.mode == 'train':
         model.train(resume=True)
     if args.mode == 'test':
-        model.infer(args.test_folder, save_dir=args.save_dir, img_suffix=args.img_suffix, video=True)
+        model.infer(args.test_folder, save_dir=args.save_dir, img_suffix=args.img_suffix, video=False)
     
 if __name__ == '__main__':
     # parse args

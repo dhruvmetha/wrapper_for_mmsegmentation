@@ -25,6 +25,7 @@ from mmseg.models import build_segmentor
 from mmseg.apis import train_segmentor
 from utils import *
 
+
 class ModelRunner():
     def __init__(self, cfg, device='cuda', gpu_ids=[0], seed=42):
         self.cfg = None
@@ -34,7 +35,10 @@ class ModelRunner():
         mmcv.mkdir_or_exist(os.path.abspath(self.cfg.work_dir))
         self.CLASSES = cfg.model_meta.classes
         self.PALETTE = cfg.model_meta.palette
+        self._save_config()
         
+    def _save_config(self):
+        self.cfg.dump(f'generated_configs/{self.model_meta.name}.py')
         
     def _prepare_cfg(self, cfg, device, gpu_ids, seed):
         self.cfg = Config.fromfile(self.model_meta.model_config)
@@ -110,7 +114,7 @@ class ModelRunner():
         validate the model for quantitative analysis.
         '''
         pass
-    
+        
     def infer(self, img_or_folder, save_dir="", device='cpu', video=False, img_suffix='.color.png', latest=True):
         '''
         infer from the model

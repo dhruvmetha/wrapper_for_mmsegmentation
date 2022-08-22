@@ -8,3 +8,5 @@ pretrain/
 mmsegmentation/
 **/__pycache__/
 **/.ipynb_checkpoints/
+cpp/
+torch_scripts/
