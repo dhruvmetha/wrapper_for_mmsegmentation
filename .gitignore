@@ -5,7 +5,6 @@ move_dragon/
 segmenter_more_classes/
 test_images/
 pretrain/
-mmsegmentation/
 **/__pycache__/
 **/.ipynb_checkpoints/
 cpp/
